@@ -1,0 +1,17 @@
+{
+  "name": "ngx-blockly-celia",
+  "version": "1.0.0",
+  "description": "Editor Blockly com exportação Python para Angular",
+  "author": "Wesley Moura Rocha",
+  "keywords": ["angular", "blockly", "python", "editor"],
+  "license": "MIT",
+  "peerDependencies": {
+    "@angular/common": "^19.2.0",
+    "@angular/core": "^19.2.0",
+    "blockly": "^11.2.2"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
+}

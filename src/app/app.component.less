@@ -1,0 +1,191 @@
+.layout {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 200px;
+    background-color: #f0f0f0;
+    padding: 1rem;
+    border-right: 1px solid #ccc;
+}
+
+.sidebar h2 {
+    margin-top: 0;
+    font-size: 1.4rem;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin: 0.5rem 0;
+}
+
+.sidebar a {
+    text-decoration: none;
+    color: #333;
+}
+
+.sidebar a.active {
+    font-weight: bold;
+    color: #007bff;
+}
+
+.content {
+    flex: 1;
+    padding: 1rem;
+}
+
+// .sidebar a {
+//     display: block;
+//     padding: 0.5rem;
+//     border-radius: 4px;
+//     color: #333;
+//     text-decoration: none;
+//     transition: background 0.3s;
+// }
+
+// .sidebar a:hover {
+//     background-color: #eaeaea;
+// }
+
+// .sidebar a.active {
+//     background-color: #007bff;
+//     color: white;
+// }
+
+.content {
+    flex: 1;
+    padding: 2rem;
+    overflow: auto;
+}
+
+// .layout {
+//     display: flex;
+//     height: 100vh;
+//     font-family: Arial, sans-serif;
+// }
+
+// .sidebar {
+//     width: 200px;
+//     background-color: #f8f9fa;
+//     padding: 1rem;
+//     border-right: 1px solid #ddd;
+// }
+
+// .sidebar h2 {
+//     margin-top: 0;
+// }
+
+// .sidebar ul {
+//     list-style: none;
+//     padding: 0;
+//     margin: 0;
+// }
+
+/* Layout principal */
+
+
+.layout {
+    display: flex;
+    height: 100vh;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1e1e1e;
+    color: #d4d4d4;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 200px;
+    background-color: #252526;
+    padding: 20px;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar h2 {
+    color: #ffffff;
+    font-size: 18px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #3c3c3c;
+    padding-bottom: 10px;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    margin-bottom: 10px;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: #d4d4d4;
+    border-radius: 4px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+}
+
+.sidebar a:hover {
+    background-color: #37373d;
+}
+
+.sidebar a.active {
+    background-color: #007acc;
+    color: #ffffff;
+}
+
+/* Conteúdo */
+.content {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    background-color: #1e1e1e;
+}
+
+.toggle-menu {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background-color: #333;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 6px 10px;
+    cursor: pointer;
+    z-index: 1000;
+}
+
+.toggle-menu:hover {
+    background-color: #555;
+}
+
+.menu-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* 🔥 faz o título ir pra esquerda e o botão pra direita */
+    padding: 10px;
+}
+
+.menu-header h2 {
+    margin: 0;
+    font-size: 1.5em;
+    color: white;
+    flex-grow: 1;
+    /* permite que o h2 ocupe o espaço necessário */
+}
+
+.toggle-menu {
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+    margin-left: 10px;
+}
