@@ -1,6 +1,73 @@
-<div #blocklyDiv id="blocklyDiv"></div>
+<!-- <div #blocklyDiv id="blocklyDiv"></div>
 
 <button (click)="gerarCodigoPython()">Gerar Código Python</button>
 <button (click)="baixarArquivoPython()">Baixar como .py</button>
 
-<pre>{{ codigoPython }}</pre>
+<pre>{{ codigoPython }}</pre> -->
+
+<!-- 
+<div>
+    <button (click)="toggleModoCodigo()">
+        {{ modoCodigo ? 'Voltar para Blocos' : 'Editar Código Python' }}
+    </button>
+
+    <div *ngIf="!modoCodigo && blocklyDiv">
+        <div #blocklyDiv class="blockly-editor" style="height: 500px;"></div>
+        <button (click)="gerarCodigoPython()">Gerar Código Python</button>
+        <button (click)="baixarArquivoPython()">Baixar como .py</button>
+    </div>
+
+    <div *ngIf="modoCodigo">
+        <textarea style="width: 100%; height: 500px" [(ngModel)]="codigoPython"></textarea>
+    </div>
+</div> -->
+
+<ng-container *ngIf="!modoCodigo">
+    <div *ngIf="mostrarBlocklyEditor" #blocklyDiv id="blocklyDiv" style="height: 400px; width: 100%;"></div>
+    <button class="btn" (click)="gerarCodigoPython()">Gerar Código Python</button>
+    <button class="btn" (click)="baixarArquivoPython()">Baixar como .py</button>
+    <button class="btn btn-secundario" (click)="toggleModoCodigo()">Editar código manualmente</button>
+    <pre>{{ codigoPython }}</pre>
+</ng-container>
+<!-- 
+<div *ngIf="modoCodigo">
+
+    <textarea [(ngModel)]="codigoPython" class="editor-texto" rows="20" cols="80" style="width: 100%; font-family: monospace;"></textarea>
+    <br />
+    <button class="btn" (click)="abrirNoVSCode()">Abrir no VS Code</button>
+    <button class="btn btn-secundario" (click)="toggleModoCodigo()">Voltar para blocos</button>
+
+</div> -->
+<div *ngIf="modoCodigo">
+    <div class="editor-wrapper">
+        <div class="editor-linhas">
+            <div *ngFor="let linha of codigoPython.split('\n'); let i = index">
+                {{ i + 1 }}
+            </div>
+        </div>
+        <!-- <div class="editor-codigo" contenteditable="true" (input)="onCodigoEditado($event)" [innerText]="codigoPython">
+        </div> -->
+        <div class="editor-codigo" contenteditable="true" (input)="onCodigoEditado($event)" #editorDiv></div>
+    </div>
+
+    <br />
+    <button class="btn" (click)="abrirNoVSCode()">Abrir no VS Code</button>
+    <button class="btn btn-secundario" (click)="toggleModoCodigo()">Voltar para blocos</button>
+</div>
+
+
+<div *ngIf="mostrarConfirmacao" class="modal-overlay">
+    <div class="modal">
+        <p>O código em desenvolvimento será perdido. Deseja continuar?</p>
+        <button (click)="confirmarTroca()">Sim, descartar</button>
+        <button (click)="cancelarTroca()">Cancelar</button>
+    </div>
+</div>
+
+<!-- Modal de mensagem -->
+<div *ngIf="mensagemModal" class="modal-overlay">
+    <div class="modal">
+        <p>{{ mensagemModal }}</p>
+        <button (click)="mensagemModal = null">Fechar</button>
+    </div>
+</div>

@@ -1,1 +1,42 @@
 /* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+// adicionei aqui pra baixo
+@primary-color: #00b7a5; // azul escuro
+@secondary-color: #003c55; // azul claro
+@accent-color: #1abc9c; // verde-água
+@warn-color: #e53935;
+@background-dark: #1e1e1e;
+@text-light: #ffffff;
+
+
+body {
+    background-color: @background-dark;
+    color: @text-light;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+}
+
+.mat-toolbar {
+    background-color: @primary-color !important;
+    color: @text-light;
+}
+
+.sidebar {
+    background-color: @background-dark;
+    color: @text-light;
+}
+
+.sidebar a.active {
+    background-color: @secondary-color !important;
+    color: @text-light;
+}

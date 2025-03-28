@@ -1,63 +1,85 @@
-# NgxBlocklyCelia
+# ngx-blockly-celia
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 19.2.0.
+A customizable Blockly editor component for Angular that generates Python code from visual blocks and supports export to `.py` files.
 
-## Code scaffolding
+![npm](https://img.shields.io/npm/v/ngx-blockly-celia)
+![Angular](https://img.shields.io/badge/angular-standalone%20component-green)
+![License](https://img.shields.io/npm/l/ngx-blockly-celia)
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+---
 
-```bash
-ng generate component component-name
-```
+## ✨ Features
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- Define custom blocks using `@Input()`
+- Python code generation (`print("...")`)
+- Export generated code as `.py` with one click
+- Compatible with Blockly v11+
+- Fully standalone component (Angular 15+)
 
-```bash
-ng generate --help
-```
+---
 
-## Building
-
-To build the library, run:
-
-```bash
-ng build ngx-blockly-celia
-```
-
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
-
-### Publishing the Library
-
-Once the project is built, you can publish your library by following these steps:
-
-1. Navigate to the `dist` directory:
-   ```bash
-   cd dist/ngx-blockly-celia
-   ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-   ```bash
-   npm publish
-   ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+## 🚀 Installation
 
 ```bash
-ng test
+npm install ngx-blockly-celia blockly
 ```
 
-## Running end-to-end tests
+> ⚠️ **Important:** This library declares `blockly` as a `peerDependency`. You must install it alongside.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
+## 🧠 Example usage
+
+```ts
+import { BlocklyEditorComponent } from 'ngx-blockly-celia';
+
+@Component({
+  standalone: true,
+  imports: [BlocklyEditorComponent],
+  ...
+})
+export class AppComponent {
+  blocks = [
+    {
+      type: 'say_hello',
+      label: 'Say Hello',
+      color: 160,
+      python: () => 'print("Hello")\n',
+      tooltip: 'Prints Hello',
+      url: 'https://example.com'
+    }
+  ];
+}
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+```html
+<app-blockly-editor [blocks]="blocks"></app-blockly-editor>
+```
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## 🧱 Block schema
+
+Each block definition can include the following fields:
+
+| Field     | Type             | Required | Description                         |
+|-----------|------------------|----------|-------------------------------------|
+| `type`    | `string`         | ✅ Yes   | Unique block type name              |
+| `label`   | `string`         | ✅ Yes   | Text displayed on the block         |
+| `color`   | `number`         | ❌ No    | HSL hue (0–360)                     |
+| `tooltip` | `string`         | ❌ No    | Shown on mouse hover                |
+| `url`     | `string`         | ❌ No    | Help link (opens on question mark) |
+| `python`  | `() => string`   | ✅ Yes   | Function that returns Python code   |
+
+---
+
+## 🔗 Links
+
+- [Blockly documentation](https://developers.google.com/blockly)
+- [Angular](https://angular.io/)
+
+---
+
+## 🪪 License
+
+MIT © Wesley

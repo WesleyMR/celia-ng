@@ -1,22 +1,33 @@
 <!-- <app-blockly-editor [blocks]="blocks" /> -->
 
 <!-- SE QUISER VOLTAR A COMO ERA, DESCOMENTE A LINHA ACIMA E COMENTE AS ABAIXO -->
-<button class="toggle-menu" (click)="mostrarSidebar = !mostrarSidebar">
-    ☰
-</button>
+
+<app-topbar></app-topbar>
 
 <div class="layout">
-    <nav class="sidebar" *ngIf="mostrarSidebar">
-      <h2>Celia</h2>
-      <ul>
-        <li><a routerLink="/code" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Code</a></li>
-        <li><a routerLink="/run" routerLinkActive="active">Run</a></li>
-        <li><a routerLink="/gazebo" routerLinkActive="active">Gazebo</a></li>
-      </ul>
-    </nav>
-  
-    <main class="content">
-      <router-outlet></router-outlet>
-    </main>
-  </div>
-  
+  <!-- SIDEBAR -->
+  <nav class="sidebar" *ngIf="mostrarSidebar">
+    <div class="menu-header">
+      <div class="logo-container">
+        <img src="assets/celiaa.png" alt="Logo Celia" class="logo" />
+        <h2>Celia</h2>
+      </div>
+      <button class="toggle-menu" (click)="mostrarSidebar = false">✖</button>
+    </div>
+    <ul>
+      <li><a routerLink="/code" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Code</a></li>
+      <li><a routerLink="/run" routerLinkActive="active">Run</a></li>
+      <li><a routerLink="/gazebo" routerLinkActive="active">Gazebo</a></li>
+    </ul>
+  </nav>
+
+  <!-- BOTÃO FLUTUANTE para abrir o menu -->
+  <button class="floating-toggle" *ngIf="!mostrarSidebar" (click)="mostrarSidebar = true">
+    ☰
+  </button>
+
+  <!-- CONTEÚDO -->
+  <main class="content">
+    <router-outlet></router-outlet>
+  </main>
+</div>

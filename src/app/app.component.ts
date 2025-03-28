@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { BlocklyEditorComponent } from './blockly-editor/blockly-editor.component';
 import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router'; // ✅
 import { CommonModule } from '@angular/common';
+import { TopbarComponent } from './shared/topbar/topbar.component';
+import { MatDialogModule } from '@angular/material/dialog';
+import { FormsModule } from '@angular/forms';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+
 
 @Component({
   selector: 'app-root',
@@ -11,7 +17,12 @@ import { CommonModule } from '@angular/common';
     RouterOutlet,
     RouterLink,
     RouterLinkActive,
-    BlocklyEditorComponent
+    TopbarComponent,
+    BlocklyEditorComponent,
+    MatDialogModule,
+    FormsModule,
+    MatFormFieldModule,
+    MatInputModule
   ],
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.less']
