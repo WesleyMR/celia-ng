@@ -1,1 +1,72 @@
-<p>celia-run works!</p>
+<mat-card>
+    <mat-card-title class="margem">Flight Tests</mat-card-title>
+
+    <div class="button-bar margem">
+        <div class="buttons">
+            <button mat-raised-button color="primary" (click)="activateTestFlight()">
+                {{ showTestFlight ? 'Hide' : 'Control Tello' }}
+            </button>
+
+            <button mat-raised-button color="accent" (click)="toggleBlocklyTerminal()">Blockly Code</button>
+
+            <button mat-raised-button color="accent" (click)="toggleSwarmTerminal()">Swarm</button>
+        </div>
+    </div>
+
+    <div *ngIf="showTestFlight">
+        <div class="button-bar margem">
+            <button mat-raised-button color="warn" (click)="runTestFlight()" [disabled]="isRunningTest">
+                {{ testRunning ? 'Kill' : isRunningTest ? 'Running...' : 'Run' }}
+            </button>
+        </div>
+
+        <div class="terminal-grid">
+            <div class="terminal-wrapper">
+                <mat-card-subtitle>ROS2 Launch</mat-card-subtitle>
+                <pre class="terminal">{{ outputLaunch }}</pre>
+            </div>
+
+            <div class="terminal-wrapper">
+                <mat-card-subtitle>/cmd_vel Listener</mat-card-subtitle>
+                <pre class="terminal">{{ outputCmdVel }}</pre>
+            </div>
+
+            <div class="terminal-wrapper">
+                <mat-card-subtitle>Teleop</mat-card-subtitle>
+                <pre class="terminal">{{ outputTeleop }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal do Blockly -->
+    <div *ngIf="showBlocklyTerminal">
+        <div class="button-bar margem">
+            <button mat-raised-button color="warn" (click)="runBlocklyCode()" [disabled]="isRunningBlockly">
+                {{ isRunningBlockly ? 'Running...' : 'Run' }}
+            </button>
+        </div>
+
+        <div class="terminal-grid">
+            <div class="terminal-wrapper">
+                <mat-card-subtitle>Blockly Terminal</mat-card-subtitle>
+                <pre class="terminal">{{ outputBlockly }}</pre>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminal do Swarm -->
+    <div *ngIf="showSwarmTerminal">
+        <div class="button-bar margem">
+            <button mat-raised-button color="warn" (click)="runSwarm()" [disabled]="isRunningSwarm">
+                {{ isRunningSwarm ? 'Running...' : 'Run' }}
+            </button>
+        </div>
+
+        <div class="terminal-grid">
+            <div class="terminal-wrapper">
+                <mat-card-subtitle>Swarm Terminal</mat-card-subtitle>
+                <pre class="terminal">{{ outputSwarm }}</pre>
+            </div>
+        </div>
+    </div>
+</mat-card>

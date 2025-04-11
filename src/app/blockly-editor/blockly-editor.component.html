@@ -24,9 +24,9 @@
 
 <ng-container *ngIf="!modoCodigo">
     <div *ngIf="mostrarBlocklyEditor" #blocklyDiv id="blocklyDiv" style="height: 400px; width: 100%;"></div>
-    <button class="btn" (click)="gerarCodigoPython()">Gerar Código Python</button>
-    <button class="btn" (click)="baixarArquivoPython()">Baixar como .py</button>
-    <button class="btn btn-secundario" (click)="toggleModoCodigo()">Editar código manualmente</button>
+    <button class="btn" (click)="gerarCodigoPython()">Generate Python Code</button>
+    <button class="btn" (click)="baixarArquivoPython()">Download .py</button>
+    <button class="btn btn-secundario" (click)="toggleModoCodigo()">Edit Code</button>
     <pre>{{ codigoPython }}</pre>
 </ng-container>
 <!-- 
@@ -51,23 +51,23 @@
     </div>
 
     <br />
-    <button class="btn" (click)="abrirNoVSCode()">Abrir no VS Code</button>
-    <button class="btn btn-secundario" (click)="toggleModoCodigo()">Voltar para blocos</button>
+    <button class="btn" (click)="abrirNoVSCode()">Open VSCode</button>
+    <button class="btn btn-secundario" (click)="toggleModoCodigo()">Back to blocks</button>
 </div>
 
 
 <div *ngIf="mostrarConfirmacao" class="modal-overlay">
     <div class="modal">
-        <p>O código em desenvolvimento será perdido. Deseja continuar?</p>
-        <button (click)="confirmarTroca()">Sim, descartar</button>
-        <button (click)="cancelarTroca()">Cancelar</button>
+        <p class="texto">The code under development will be lost. Do you want to continue?</p>
+        <button class="btn" (click)="confirmarTroca()">Yes, go ahead.</button>
+        <button class="btn" (click)="cancelarTroca()">Cancel</button>
     </div>
 </div>
 
 <!-- Modal de mensagem -->
 <div *ngIf="mensagemModal" class="modal-overlay">
     <div class="modal">
-        <p>{{ mensagemModal }}</p>
-        <button (click)="mensagemModal = null">Fechar</button>
+        <p class="texto">{{ mensagemModal }}</p>
+        <button class="btn" (click)="mensagemModal = null">Close</button>
     </div>
 </div>

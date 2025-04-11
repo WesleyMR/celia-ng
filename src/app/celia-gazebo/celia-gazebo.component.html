@@ -1,1 +1,105 @@
-<p>celia-gazebo works!</p>
+<mat-card>
+    <mat-card-title class="margem">Run ROS2 Commands</mat-card-title>
+    <!-- 
+    <mat-slide-toggle [(ngModel)]="showCommand">Exibir comando</mat-slide-toggle> -->
+
+    <div class="button-bar margem">
+        <mat-slide-toggle color="accent" [(ngModel)]="showCommand">Show Executed Commands</mat-slide-toggle>
+
+        <div class="buttons">
+            <button mat-raised-button color="accent" (click)="runCommand('build')" [disabled]="isRunning">
+                {{ isRunning && currentCommand === 'build' ? 'Running...' : 'Build' }}
+            </button>
+
+            <button mat-raised-button color="accent" (click)="runCommand('packages')" [disabled]="isRunning">
+                {{ isRunning && currentCommand === 'packages' ? 'Running...' : 'List Packages - Grep Tello' }}
+            </button>
+<!-- 
+            <button mat-raised-button color="primary" (click)="runCommand('driver')" [disabled]="isRunning">
+                {{ isRunning && currentCommand === 'driver' ? 'Running...' : 'Ros2 Run - Tello' }}
+            </button> -->
+
+            <button mat-raised-button color="primary" (click)="toggleDriver()">
+                {{ driverRunning ? 'Stop Driver' : 'Ros2 Launch - Tello' }}
+            </button>
+
+            <button mat-raised-button color="warn" (click)="runCommand('keyboard')" [disabled]="isRunning">
+                {{ isRunning && currentCommand === 'keyboard' ? 'Running...' : 'Teleop' }}
+            </button>
+
+            <button mat-raised-button color="secondary" (click)="showManualInput = !showManualInput">
+                {{ showManualInput ? 'Close' : 'Type your commands' }}
+            </button>
+        </div>
+    </div>
+
+    <mat-card-content>
+        <div *ngIf="showManualInput" class="manual-section">
+            <textarea name="manualCommand" [(ngModel)]="manualCommand" rows="3"
+                placeholder="Type a Ros2 Command or any other unix command">
+            </textarea>
+            <button class="buttonMargin" mat-raised-button color="accent" (click)="runManualCommand()"
+                [disabled]="isRunning || !manualCommand">
+                Execute
+            </button>
+        </div>
+    </mat-card-content>
+
+
+    <mat-card-content>
+        <div class="terminal-wrapper">
+            <pre class="terminal">{{ output }}</pre>
+        </div>
+    </mat-card-content>
+
+    <mat-divider></mat-divider>
+    <h4 class="margem">Quick Commands</h4>
+
+    <!-- Dropdown simples -->
+    <div class="command-section margem">
+        <mat-form-field appearance="fill">
+            <mat-label>Command</mat-label>
+            <mat-select [(value)]="selectedBasic" (selectionChange)="onBasicSelect($event.value)">
+                <mat-option *ngFor="let cmd of basicCommands" [value]="cmd.command">
+                    {{ cmd.label }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+    </div>
+
+    <!-- Dropdown com parâmetro -->
+    <div class="command-section margem">
+        <mat-form-field appearance="fill">
+            <mat-label>Commands with parameter</mat-label>
+            <mat-select [(value)]="selectedParam">
+                <mat-option *ngFor="let cmd of paramCommands" [value]="cmd.template">
+                    {{ cmd.label }}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Parameter</mat-label>
+            <input matInput [(ngModel)]="paramValue" placeholder="/topic_name or node" />
+        </mat-form-field>
+
+        <button mat-raised-button color="primary" (click)="runParamCommand()"
+            [disabled]="!selectedParam || !paramValue">
+            Executar
+        </button>
+    </div>
+
+    <div class="history" *ngIf="commandHistory.length > 0">
+        <h4 class="margem">Recent Commands</h4>
+        <div class="history-list">
+            <ul>
+                <li *ngFor="let cmd of commandHistory; let i = index">
+                    <button mat-button (click)="runFromHistory(cmd)">
+                        <mat-icon>refresh</mat-icon> {{ cmd }}
+                    </button>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+</mat-card>

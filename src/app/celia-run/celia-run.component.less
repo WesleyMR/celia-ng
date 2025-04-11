@@ -1,0 +1,85 @@
+.terminal-grid {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+}
+
+.terminal-wrapper {
+    flex: 1;
+    min-width: 300px;
+    max-width: 100%;
+    background-color: #1e1e1e;
+    color: #00ff99;
+    padding: 12px;
+    border-radius: 8px;
+    height: 250px;
+    overflow-y: auto;
+    margin: 1rem;
+}
+
+button[mat-raised-button][color="primary"] {
+    background-color: #003c55;
+    color: white;
+}
+
+button[mat-raised-button][color="accent"] {
+    background-color: #003c55;
+    color: white;
+}
+
+button[mat-raised-button][color="warn"] {
+    background-color: #003c55;
+    color: white;
+}
+
+button[mat-raised-button][color="secondary"] {
+    background-color: white;
+    color: #003c55;
+}
+
+.toogleBackground {
+    background: #003c55 !important;
+}
+
+.margem {
+    margin-left: 1rem;
+    margin-right: 1rem;
+    margin-top: 1rem;
+    //margin-bottom: 10px;
+}
+
+mat-card-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 1rem;
+}
+
+.button-bar {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 1rem;
+
+    .buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+    }
+}
+
+// .terminal-wrapper {
+//     min-height: 100px;
+//     max-height: 300px;
+//     overflow-y: auto;
+//     background-color: #1e1e1e;
+//     margin-bottom: 1rem;
+//     border-radius: 8px;
+// }
+
+.terminal {
+    color: #00ff88;
+    padding: 1rem;
+    font-family: monospace;
+    white-space: pre-wrap;
+}

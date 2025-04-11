@@ -13,5 +13,5 @@ export const routes: Routes = [
   { path: '', redirectTo: '/code', pathMatch: 'full' },
   { path: 'code', component: CeliaCodeComponent }, // ✅ Agora vai para CodeComponent
   { path: 'run', component: CeliaRunComponent },
-  { path: 'gazebo', component: CeliaGazeboComponent },
+  { path: 'commands', component: CeliaGazeboComponent },
 ];

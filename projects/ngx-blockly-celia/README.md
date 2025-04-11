@@ -41,6 +41,7 @@ import { BlocklyEditorComponent } from 'ngx-blockly-celia';
 export class AppComponent {
   blocks = [
     {
+      option: 'default',
       type: 'say_hello',
       label: 'Say Hello',
       color: 160,
